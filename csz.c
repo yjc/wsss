@@ -170,7 +170,8 @@ int main(int argc,char *argv[])
 	char *input_num;
 	int ret;
 	bool input_flag[10];
-	
+
+start:
 	memset(input_flag, false, sizeof(bool) * 10);
 
 	ret = initRand();
@@ -197,7 +198,9 @@ int main(int argc,char *argv[])
 	for(i=0;i<10 && ret;i++)
 	{
 		memset(input_num, 0, sizeof(char) * 10);
+
 		printf("Please input 4 number:");
+
 		scanf("%s", input_num);
 
 		d_printf("You input:%s\n", input_num);
@@ -218,8 +221,20 @@ int main(int argc,char *argv[])
 		ret = isCorrect(input_num, anser);
 	}
 
-	return 0;
+	printf("Play again ? (y/n)");
 
+	while( getchar() != '\n' );
+	scanf("%c", input_num);
+
+	if( input_num[0] == 'y' || input_num[0] == 'Y' ){
+
+		free(input_num);
+		input_num = NULL;
+
+		goto start;
+	}
+
+	return 0;
 err:
 nomem:
 	return -1;
