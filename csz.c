@@ -3,6 +3,7 @@
 #include <time.h>
 #include <stdarg.h>
 #include <string.h>
+#include <ctype.h>
 
 #define	CONFIG_DEBUG	0
 
@@ -196,20 +197,20 @@ int main(int argc,char *argv[])
 	for(i=0;i<10 && ret;i++)
 	{
 		memset(input_num, 0, sizeof(char) * 10);
-		printf("\t\tPlease input 4 number:");
+		printf("Please input 4 number:");
 		scanf("%s", input_num);
 
 		d_printf("You input:%s\n", input_num);
 
 		if(input_num[4] != 0){
-			printf("\t\tPlease input 4 different number!\n");
+			printf("Please input 4 different number!\n");
 			i--;
 			continue;
 		}
 
 		ret = isDiffNum(input_num);
 		if(ret){
-			printf("\t\tPlease input 4 different number!\n");
+			printf("Please input 4 different number!\n");
 			i--;
 			continue;
 		}
